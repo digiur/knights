@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctrnj3dasodu2"]
+
+[ext_resource type="PackedScene" uid="uid://dde38iiqlf5r0" path="res://scenes/player.tscn" id="1_yi2q8"]
+[ext_resource type="PackedScene" uid="uid://clu0bugnvu07e" path="res://scenes/caveSegment.tscn" id="2_2utrp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4kndw"]
+
+[sub_resource type="Sky" id="Sky_ivsxo"]
+sky_material = SubResource("ProceduralSkyMaterial_4kndw")
+
+[sub_resource type="Environment" id="Environment_71jjb"]
+background_mode = 1
+background_color = Color(0, 0.25098, 0.188235, 1)
+background_energy_multiplier = 5.85
+sky = SubResource("Sky_ivsxo")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_epwcw"]
+
+[node name="Game" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_71jjb")
+camera_attributes = SubResource("CameraAttributesPractical_epwcw")
+
+[node name="caveSegment" parent="." instance=ExtResource("2_2utrp")]
+position = Vector2(-206, 14)
+
+[node name="player" parent="." instance=ExtResource("1_yi2q8")]
+position = Vector2(-38, 111)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(2, 2)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

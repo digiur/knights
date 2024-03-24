@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://clu0bugnvu07e"]
+
+[ext_resource type="Script" path="res://scripts/cave.gd" id="1_ksxgi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tgcq6"]
+
+[sub_resource type="Curve2D" id="Curve2D_bgtcr"]
+_data = {
+"points": PackedVector2Array(-2, 334, 2, -334, -399, -39, -156, -6, 156, 6, -63, -553, -4, -114, 4, 114, 129, -371, 14, -164, -14, 164, -57, 61, -69.2957, -81.8949, 69.2957, 81.8949, 153, 388, -133, -1, 133, 1, 434, 491, -115, -16, 115, 16, 660, 328, -262, 3, 262, -3, 1016, 584, -10, 78, 10, -78, 1376, 461, -145, 47, 145, -47, 1663, 440, -144, -63, 144, 63, 1981, 295, -334, 78, 334, -78, 2427, 469, 62, 108, -62, -108, 2460, 38, -126, -2, 126, 2, 2701, -321, 46, -225, -46, 225, 2971, 307, 83, -153, -83, 153, 2113, 953, 296, -113, -296, 113, 823, 909, 157, -15, -157, 15, -7, 633, 1, 245, -1, -245, -391, 231)
+}
+point_count = 19
+
+[node name="StaticBody2D" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_tgcq6")
+script = ExtResource("1_ksxgi")
+pathPath = NodePath("Path2D")
+collisionPolyPath = NodePath("CollisionPolygon2D")
+colorPolyPath = NodePath("Polygon2D")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(52, 18)
+curve = SubResource("Curve2D_bgtcr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.588235, 0.364706, 1, 1)
+antialiased = true

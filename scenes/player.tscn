@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dde38iiqlf5r0"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_btxj0"]
+[ext_resource type="Texture2D" uid="uid://b8ysnjjur8chy" path="res://assets/basketball.png" id="1_d0arg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_acrb1"]
+friction = 0.8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n4c1a"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+mass = 25.0
+physics_material_override = SubResource("PhysicsMaterial_acrb1")
+can_sleep = false
+max_contacts_reported = 10
+contact_monitor = true
+angular_damp = 1.0
+script = ExtResource("1_btxj0")
+timerPath = NodePath("Timer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n4c1a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.041, 0.041)
+texture = ExtResource("1_d0arg")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
